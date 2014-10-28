@@ -1,20 +1,26 @@
-<!DOCTYPE html PUBLIC>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- Latest compiled and minified JQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-	<title> Marshall Timer </title>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Timer CSS -->
+<link rel="stylesheet" href="MarshallTimer.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+	<title> Marshall Timer</title>
 
 </head>
 
 <body>
 
-<h1> Marshall Timer </h1>
+<h1> Marshall <div style="color: #990000; display:inline;">Timer</div> </h1>
 
 <!-- Timer Field Text -->
 <div id="timerField"> 
@@ -24,6 +30,32 @@
 <button type="button" class="btn btn-default"> Start </button>
 <button type="button" class="btn btn-default"> Stop </button>
 <button type="button" class="btn btn-default"> Reset </button>
+
+<br><br>
+
+
+
+<form class="form-horizontal" role="form">
+  <div class="form-group form-group-sm">
+    <label class="col-sm-4 control-label" for="formGroupInputSmall">Hours</label>
+    <div class="col-sm-1">
+      <input class="form-control" type="text" id="formGroupInputSmall" >
+    </div>
+    
+    <label class="col-sm-1 control-label" for="formGroupInputSmall">Minutes</label>
+    <div class="col-sm-1">
+      <input class="form-control" type="text" id="formGroupInputSmall" >
+    </div>
+    <div class="col-sm-1">
+		<button type="button" class="btn btn-default btn-sm" id="setTimer"> Set Timer </button>
+    </div>
+  </div>
+
+	
+
+</form>
+
+
 
 </body>
 </html>
