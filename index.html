@@ -33,27 +33,80 @@
 
 <br><br>
 
+<!--
+<div class="col-sm-12">
 
+	<div class="col-sm-3">
+		<ul class="list-inline">
+			<li class="col-sm-3">Set<div style="color: #990000; display:inline;">Timer</div></li>
+			<li class="col-sm-3">Set<div style="color: #990000; display:inline;">Timer</div></li>
+		</ul>	
+	</div>
+
+</div>	
+
+-->
+
+<hr>
+
+<br>
+
+
+
+<div class="col-sm-12" id="timerList">
+	<ul class="list-inline">
+  		<div class="col-sm-2 col-sm-offset-2"><li>Set<div style="color: #990000; display:inline;">Timer</div></li></div>
+  		<div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">One</div></li></div>
+  		<div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">Two</div></li></div>
+  		<div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">Three</div></li></div>
+	</ul>
+</div>	
+
+<div class="col-sm-12" id="timeRemaining">
+	<ul class="list-inline">
+  		
+  		<div class="col-sm-2 col-sm-offset-4"><li>When time remaining is:</li></div>
+  		<div class="col-sm-2"><li>When time remaining is:</li></div>
+  		<div class="col-sm-2"><li>When time remaining is:</li></div>
+	</ul>
+</div>
 
 <form class="form-horizontal" role="form">
   <div class="form-group form-group-sm">
-    <label class="col-sm-4 control-label" for="formGroupInputSmall">Hours</label>
-    <div class="col-sm-1">
-      <input class="form-control" type="text" id="formGroupInputSmall" >
+  	<div class="col-sm-12" id="hours">
+  		<ul class="list-inline">
+  			<li>			 		
+  				<label class="col-sm-1 col-sm-offset-2 control-label" for="formGroupInputSmall">Hours</label>
+    			<div class="col-sm-1">
+      				<input class="form-control" type="text" id="formGroupInputSmall" >
+    			</div> 			
+  			</li>
+  			<li>			 		
+  				<label class="col-sm-1 control-label" for="formGroupInputSmall">Hours</label>
+    			<div class="col-sm-1">
+      				<input class="form-control" type="text" id="formGroupInputSmall" >
+    			</div> 			
+  			</li>
+  			<li>			 		
+  				<label class="col-sm-1  control-label" for="formGroupInputSmall">Hours</label>
+    			<div class="col-sm-1">
+      				<input class="form-control" type="text" id="formGroupInputSmall" >
+    			</div> 			
+  			</li>
+  			<li>			 		
+  				<label class="col-sm-1  control-label" for="formGroupInputSmall">Hours</label>
+    			<div class="col-sm-1">
+      				<input class="form-control" type="text" id="formGroupInputSmall" >
+    			</div> 			
+  			</li>
+  		</ul>    	
     </div>
-    
-    <label class="col-sm-1 control-label" for="formGroupInputSmall">Minutes</label>
-    <div class="col-sm-1">
-      <input class="form-control" type="text" id="formGroupInputSmall" >
-    </div>
-    <div class="col-sm-1">
-		<button type="button" class="btn btn-default btn-sm" id="setTimer"> Set Timer </button>
-    </div>
-  </div>
-
-	
-
+  </div>	
 </form>
+
+
+
+
 
 
 

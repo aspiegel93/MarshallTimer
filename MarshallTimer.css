@@ -15,3 +15,17 @@ h1{
 #setTimer{
 	text-align: left;
 }
+
+#timerList{
+
+	font-size: 18px;
+}
+
+#timeRemaining{
+	font-size: 10px;
+
+}
+
+#hours{
+	font-size: 12px;
+}
