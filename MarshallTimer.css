@@ -1,0 +1,17 @@
+body{
+	text-align: center;
+}
+
+h1{
+	text-align: center;
+	padding-top: 8%;
+	font-size: 50px;
+}
+
+#timerField{
+	font-size: 50px;
+}
+
+#setTimer{
+	text-align: left;
+}
