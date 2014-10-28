@@ -5,6 +5,7 @@
 	<!-- Latest compiled and minified JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="timer.js"></script>
 	<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css">
 
@@ -18,12 +19,12 @@
 
 <!-- Timer Field Text -->
 <div id="timerField"> 
-	<p> 0:00 </p>
+	<p> 00:00:00 </p>
 </div>
 
-<button type="button" class="btn btn-default"> Start </button>
-<button type="button" class="btn btn-default"> Stop </button>
-<button type="button" class="btn btn-default"> Reset </button>
+<button type="button" class="btn btn-default" id="startButton"> Start </button>
+<button type="button" class="btn btn-default" id="stopButton"> Stop </button>
+<button type="button" class="btn btn-default" id="resetButton"> Reset </button>
 
 </body>
 </html>
