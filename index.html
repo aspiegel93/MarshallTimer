@@ -16,6 +16,15 @@
 
 	<title> Marshall Timer</title>
 
+<script>
+$(document).ready(function(){
+  $("#showTimerOptions").click(function(){
+    $("#timerList").toggle();
+  });
+});
+
+</script>
+
 </head>
 
 <body>
@@ -33,23 +42,14 @@
 
 <br><br>
 
-<!--
-<div class="col-sm-12">
 
-	<div class="col-sm-3">
-		<ul class="list-inline">
-			<li class="col-sm-3">Set<div style="color: #990000; display:inline;">Timer</div></li>
-			<li class="col-sm-3">Set<div style="color: #990000; display:inline;">Timer</div></li>
-		</ul>	
-	</div>
-
-</div>	
-
--->
-
+<div id="showTimerOptions" style="text-align:left; padding-left:25%; font-weight:bold;">
+  &#x25B6; SET TIMER
+ </div> 
 <hr>
 
 <br>
+
 
 
 
@@ -75,29 +75,85 @@
   <div class="form-group form-group-sm">
   	<div class="col-sm-12" id="hours">
   		<ul class="list-inline">
-  			<li>			 		
-  				<label class="col-sm-1 col-sm-offset-2 control-label" for="formGroupInputSmall">Hours</label>
-    			<div class="col-sm-1">
-      				<input class="form-control" type="text" id="formGroupInputSmall" >
-    			</div> 			
+  			<li>
+          <div class="col-sm-12 timerInput">			 		
+  				  Hours:
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select> <br>
+            Mins :
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>	
+            </select> 
+          </div>	
   			</li>
   			<li>			 		
-  				<label class="col-sm-1 control-label" for="formGroupInputSmall">Hours</label>
-    			<div class="col-sm-1">
-      				<input class="form-control" type="text" id="formGroupInputSmall" >
-    			</div> 			
+  				<div class="col-sm-12 timerInput">         
+            Hours:
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select> <br>
+            Mins :
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>  
+            </select> 
+          </div>			
   			</li>
   			<li>			 		
-  				<label class="col-sm-1  control-label" for="formGroupInputSmall">Hours</label>
-    			<div class="col-sm-1">
-      				<input class="form-control" type="text" id="formGroupInputSmall" >
-    			</div> 			
+  				<div class="col-sm-12 timerInput">         
+            Hours:
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select> <br>
+            Mins :
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>  
+            </select> 
+          </div> 			
   			</li>
-  			<li>			 		
-  				<label class="col-sm-1  control-label" for="formGroupInputSmall">Hours</label>
-    			<div class="col-sm-1">
-      				<input class="form-control" type="text" id="formGroupInputSmall" >
-    			</div> 			
+  			<li>			 
+          <div class="col-sm-12 timerInput">         
+            Hours:
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select> <br>
+            Mins :
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>  
+            </select> 
+          </div>         		
   			</li>
   		</ul>    	
     </div>
