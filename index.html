@@ -7,6 +7,8 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <!-- Timer CSS -->
 <link rel="stylesheet" href="MarshallTimer.css">
 
@@ -33,12 +35,12 @@ $(document).ready(function(){
 
 <!-- Timer Field Text -->
 <div id="timerField"> 
-	<p> 0:00 </p>
+	<p> 00:00:00 </p>
 </div>
 
-<button type="button" class="btn btn-default"> Start </button>
-<button type="button" class="btn btn-default"> Stop </button>
-<button type="button" class="btn btn-default"> Reset </button>
+<button type="button" class="btn btn-default" id="startButton"> Start </button>
+<button type="button" class="btn btn-default" id="stopButton"> Stop </button>
+<button type="button" class="btn btn-default" id="resetButton"> Reset </button>
 
 <br><br>
 
