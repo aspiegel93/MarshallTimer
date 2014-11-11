@@ -31,4 +31,27 @@ h1{
 }
 
 #timerInput{
-	text-align: center;
+	font-size: 12px;
+	line-height: 14px;	
+}
+
+table, tr, td{
+	padding-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#alerts{
+	padding-left: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -33,234 +33,122 @@ $(document).ready(function(){
 
 <div class="container">  
 
+<!-- ROW: Marshall Timer label --> 
 <div class="row">
   <div class="col-md-12">
     <h1> Marshall <div style="color: #990000; display:inline;">Timer</div> </h1>
   </div>
-</div> <!-- end of MARHSALL TIMER label -->
+</div>
 
-<!-- Timer Field Text -->
 
+<!-- ROW: Timer Field Text -->
 <div class="row">
   <div class="col-md-12" id="timerField"> 
    <p> 0:00 </p>
   </div>
-</div> <!-- end of main timer -->
+</div> 
 
-
+<!-- ROW: timer buttons -->
 <div class="row">
   <button type="button" class="btn btn-default"> Start </button>
   <button type="button" class="btn btn-default"> Stop </button>
   <button type="button" class="btn btn-default"> Reset </button>
-</div> <!-- end of control buttons -->
+</div> 
 
 <br>
 
-
+<!-- ROW: set timer dropdown --> 
 <div class="row" id="showTimerOptions" style="text-align:left; padding-left:25%; font-weight:bold;">
   &#x25B6; SET TIMER
  </div> 
 <hr>
 
-<br>
 
 
-
+<!-- ROW: timer input fields and labels -->
 <div class="row">
-<div class="col-sm-12" id="timerList">
-  <ul class="list-inline">
-      <div class="col-sm-2 col-sm-offset-2"><li>Set<div style="color: #990000; display:inline;">Timer</div></li></div>
-      <div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">One</div></li></div>
-      <div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">Two</div></li></div>
-      <div class="col-sm-2"><li>Alert<div style="color: #990000; display:inline;">Three</div></li></div>
-  </ul>
-</div>  
-</div>
 
-<div class="row">
-<div class="col-sm-12" id="timeRemaining">
-  <ul class="list-inline">
-      
-      <div class="col-sm-2 col-sm-offset-4"><li>When time remaining is:</li></div>
-      <div class="col-sm-2"><li>When time remaining is:</li></div>
-      <div class="col-sm-2"><li>When time remaining is:</li></div>
-  </ul>
-</div>
-</div>
+  <!-- SET TIMER -->
+  <div class="col-md-2 col-md-offset-2">
+    <div id="timerList"> Set<div style="color: #990000; display:inline;">Timer</div> </div>
+    <div id="timeRemaining"> When time remaining is: </div> 
+    <div id="timerInput">
+      <table>
+        <tr>
+          <td>Hours:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>  
+        <tr>
+          <td>Mins:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>   
+      </table>  
+    </div>
+  </div>
+
+  <!-- ALERT ONE -->
+  <div class="col-md-2">
+    <div id="timerList"> Alert<div style="color: #990000; display:inline;">One</div> </div>
+    <div id="timeRemaining"> When time remaining is: </div> 
+    <div>
+      <table id="timerInput">
+        <tr>
+          <td>Hours:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>  
+        <tr>
+          <td>Mins:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>   
+      </table>  
+    </div>
+  </div>
+
+  <!-- ALERT TWO -->
+  <div class="col-md-2">
+    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Two</div> </div>
+    <div id="timeRemaining"> When time remaining is: </div> 
+    <div>
+      <table id="timerInput">
+        <tr>
+          <td>Hours:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>  
+        <tr>
+          <td>Mins:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>   
+      </table>  
+    </div>
+  </div>
+
+  <!-- ALERT THREE -->
+  <div class="col-md-2">
+    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Three</div> </div>
+    <div id="timeRemaining"> When time remaining is: </div> 
+    <div>
+      <table id="timerInput">
+        <tr>
+          <td>Hours:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>  
+        <tr>
+          <td>Mins:</td>
+          <td><input type="text" size="1" maxlength="2"></td>
+        <tr>   
+      </table>  
+    </div>
+  </div>
+
+</div> <!-- end of set timer ROW -->
 
 
-<div class="row timerInput">
-  <form class="form-horizontal" role="form">
-    <div class="col-md-2 col-md-offset-2">
-      Hours:
-         <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select>      
-    </div>
-    <div class="col-md-2">
-      Hours:
-         <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select>      
-    </div>
-    <div class="col-md-2">
-      Hours:
-         <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select>      
-    </div>
-    <div class="col-md-2">
-      Hours:
-         <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select>      
-    </div>
-  </form>
-</div> <!-- end of input values -->
 
-<!--
-<form class="form-horizontal" role="form">
-  <div class="form-group form-group-sm">
-    <div class="col-sm-12" id="hours">
-      <ul class="list-inline">
-        <li>
-          <div class="col-sm-12 timerInput">          
-            Hours:
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select> 
-          </div>  
-        </li>
-        <li>          
-          <div class="col-sm-12 timerInput">         
-            Hours:
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select> 
-          </div>      
-        </li>
-        <li>          
-          <div class="col-sm-12 timerInput">         
-            Hours:
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select> 
-          </div>      
-        </li>
-        <li>       
-          <div class="col-sm-12 timerInput">         
-            Hours:
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> <br>
-            Mins :
-            <select>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>  
-            </select> 
-          </div>            
-        </li>
-      </ul>     
-    </div>
-  </div>  
-</form>
--->
 
 
 
 
 </div> <!-- end of container class -->
-
+  
 </body>
 </html>
