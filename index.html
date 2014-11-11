@@ -58,9 +58,11 @@ $(document).ready(function(){
 <br>
 
 <!-- ROW: set timer dropdown --> 
-<div class="row" id="showTimerOptions" style="text-align:left; padding-left:25%; font-weight:bold;">
-  &#x25B6; SET TIMER
- </div> 
+<div class="row" id="showTimerOptions">
+  <div class="col-md-offset-3 col-md-6">  
+  &#x25B6; SET TIMER | <div style="color: #990000; display:inline;">HELP</div>
+  </div>
+</div> 
 <hr>
 
 
@@ -84,6 +86,9 @@ $(document).ready(function(){
         <tr>   
       </table>  
     </div>
+    <div id="soundCheckBox">
+      <input type="checkbox" value="timerSound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
+    </div>
   </div>
 
   <!-- ALERT ONE -->
@@ -101,6 +106,9 @@ $(document).ready(function(){
           <td><input type="text" size="1" maxlength="2"></td>
         <tr>   
       </table>  
+    </div>
+    <div id="soundCheckBox">
+      <input type="checkbox" value="alert1Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
     </div>
   </div>
 
@@ -120,6 +128,9 @@ $(document).ready(function(){
         <tr>   
       </table>  
     </div>
+    <div id="soundCheckBox">
+      <input type="checkbox" value="alert2Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
+    </div>
   </div>
 
   <!-- ALERT THREE -->
@@ -138,12 +149,19 @@ $(document).ready(function(){
         <tr>   
       </table>  
     </div>
+    <div id="soundCheckBox">
+      <input type="checkbox" value="alert3Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
+    </div>
   </div>
 
 </div> <!-- end of set timer ROW -->
 
+<br>
 
-
+<!-- ROW: set timer button -->
+<div class="row">
+  <button type="button" class="btn btn-default btn-xs"> Set Timer & Close Settings </button>
+</div>
 
 
 
