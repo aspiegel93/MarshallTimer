@@ -17,7 +17,6 @@ h1{
 }
 
 #timerList{
-
 	font-size: 18px;
 }
 
@@ -28,7 +27,6 @@ h1{
 
 #timeRemaining{
 	font-size: 10px;
-
 }
 
 #hours{
@@ -54,14 +52,3 @@ table, tr, td{
 	font-size: 10px;
 	padding-bottom: 5%;
 }
-
-
-
-
-
-
-
-
-
-
-
