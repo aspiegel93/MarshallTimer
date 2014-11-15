@@ -1,172 +1,161 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<head>
+		  <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<!-- Timer CSS -->
-<link rel="stylesheet" href="MarshallTimer.css">
+		<!-- Timer CSS -->
+		<link rel="stylesheet" href="MarshallTimer.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- Timer Script -->
+		<script src="timer.js"></script>
 
-
-  <title> Marshall Timer</title>
-
-<script>
-$(document).ready(function(){
-  $("#showTimerOptions").click(function(){
-    $("#timerList").toggle();
-  });
-});
-
-</script>
-
-</head>
-
-<body>
-
-<div class="container">  
-
-<!-- ROW: Marshall Timer label --> 
-<div class="row">
-  <div class="col-md-12">
-    <h1> Marshall <div style="color: #990000; display:inline;">Timer</div> </h1>
-  </div>
-</div>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
-<!-- ROW: Timer Field Text -->
-<div class="row">
-  <div class="col-md-12" id="timerField"> 
-   <p> 0:00 </p>
-  </div>
-</div> 
+		 <title> Marshall Timer</title>
 
-<!-- ROW: timer buttons -->
-<div class="row">
-  <button type="button" class="btn btn-default"> Start </button>
-  <button type="button" class="btn btn-default"> Stop </button>
-  <button type="button" class="btn btn-default"> Reset </button>
-</div> 
+	</head>
 
-<br>
+	<body>
 
-<!-- ROW: set timer dropdown --> 
-<div class="row" id="showTimerOptions">
-  <div class="col-md-offset-3 col-md-6">  
-  &#x25B6; SET TIMER | <div style="color: #990000; display:inline;">HELP</div>
-  </div>
-</div> 
-<hr>
+		<div class="container">  
+
+			<!-- ROW: Marshall Timer label --> 
+			<div class="row">
+			  <div class="col-md-12">
+			    <h1> Marshall <div style="color: #990000; display:inline;">Timer</div> </h1>
+			  </div>
+			</div>
+
+			<!-- ROW: Timer Field Text -->
+			<div class="row">
+			  <div class="col-md-12" id="timerField"> 
+			   <p></p>
+			  </div>
+			</div> 
+
+			<!-- ROW: timer buttons -->
+			<div class="row">
+			  <button type="button" class="btn btn-default" id="startButton"> Start </button>
+			  <button type="button" class="btn btn-default" id="stopButton"> Stop </button>
+			  <button type="button" class="btn btn-default" id="resetButton"> Reset </button>
+			</div> 
+
+			<br>
+
+			<!-- ROW: set timer dropdown --> 
+			<div class="row" id="showTimerOptions">
+			  <div class="col-md-offset-3 col-md-6">  
+			  	<a href="#" style="color: #000000;" id="showOptions"> &#x25B6; SET TIMER </a> | <div style="color: #990000; display:inline;">HELP</div>
+			  </div>
+			</div> 
+			<hr>
 
 
 
-<!-- ROW: timer input fields and labels -->
-<div class="row">
+			<!-- ROW: timer input fields and labels -->
+			<div class="row" id="timerOptions" style="display:none;">
 
-  <!-- SET TIMER -->
-  <div class="col-md-2 col-md-offset-2">
-    <div id="timerList"> Set<div style="color: #990000; display:inline;">Timer</div> </div>
-    <div id="timeRemaining"> When time remaining is: </div> 
-    <div id="timerInput">
-      <table>
-        <tr>
-          <td>Hours:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>  
-        <tr>
-          <td>Mins:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>   
-      </table>  
-    </div>
-    <div id="soundCheckBox">
-      <input type="checkbox" value="timerSound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
-    </div>
-  </div>
+			  <!-- SET TIMER -->
+			  <div class="col-md-2 col-md-offset-2">
+			    <div id="timerList"> Set<div style="color: #990000; display:inline;">Timer</div> </div>
+			    <div id="timeRemaining"> When time remaining is: </div> 
+			    <div id="timerInput">
+			      <table>
+			        <tr>
+			          <td>Hours:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-timerHours"></td>
+			        <tr>  
+			        <tr>
+			          <td>Mins:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-timerMins"></td>
+			        <tr>   
+			      </table>  
+			    </div>
+			    <div id="soundCheckBox">
+			      <input type="checkbox" id="options-completeSound" checked> Play Sound? <a href="#" style="color: #990000; display:inline;" id="completePreview" title="Preview Sound">Preview</a>
+			    </div>
+			  </div>
 
-  <!-- ALERT ONE -->
-  <div class="col-md-2">
-    <div id="timerList"> Alert<div style="color: #990000; display:inline;">One</div> </div>
-    <div id="timeRemaining"> When time remaining is: </div> 
-    <div>
-      <table id="timerInput">
-        <tr>
-          <td>Hours:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>  
-        <tr>
-          <td>Mins:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>   
-      </table>  
-    </div>
-    <div id="soundCheckBox">
-      <input type="checkbox" value="alert1Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
-    </div>
-  </div>
+			  <!-- ALERT ONE -->
+			  <div class="col-md-2">
+			    <div id="timerList"> Alert<div style="color: #990000; display:inline;">One</div> </div>
+			    <div id="timeRemaining"> When time remaining is: </div> 
+			    <div>
+			      <table id="timerInput">
+			        <tr>
+			          <td>Hours:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-alert1Hours"></td>
+			        <tr>  
+			        <tr>
+			          <td>Mins:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-alert1Mins"></td>
+			        <tr>   
+			      </table>  
+			    </div>
+			    <div id="soundCheckBox">
+			      <input type="checkbox" id="options-alert1Sound" checked> Play Sound? <a href="#" style="color: #990000; display:inline;" id="alertPreview" title="Preview Sound">Preview</a>
+			    </div>
+			  </div>
 
-  <!-- ALERT TWO -->
-  <div class="col-md-2">
-    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Two</div> </div>
-    <div id="timeRemaining"> When time remaining is: </div> 
-    <div>
-      <table id="timerInput">
-        <tr>
-          <td>Hours:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>  
-        <tr>
-          <td>Mins:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>   
-      </table>  
-    </div>
-    <div id="soundCheckBox">
-      <input type="checkbox" value="alert2Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
-    </div>
-  </div>
+			  <!-- ALERT TWO -->
+			  <div class="col-md-2">
+			    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Two</div> </div>
+			    <div id="timeRemaining"> When time remaining is: </div> 
+			    <div>
+			      <table id="timerInput">
+			        <tr>
+			          <td>Hours:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-alert2Hours"></td>
+			        <tr>  
+			        <tr>
+			          <td>Mins:</td>
+			          <td><input type="text" size="1" maxlength="2" id="options-alert2Mins"></td>
+			        <tr>   
+			      </table>  
+			    </div>
+			    <div id="soundCheckBox">
+			      <input type="checkbox" id="options-alert2Sound" checked> Play Sound? <a href="#" style="color: #990000; display:inline;" id="alertPreview" title="Preview Sound">Preview</a>
+			    </div>
+			  </div>
 
-  <!-- ALERT THREE -->
-  <div class="col-md-2">
-    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Three</div> </div>
-    <div id="timeRemaining"> When time remaining is: </div> 
-    <div>
-      <table id="timerInput">
-        <tr>
-          <td>Hours:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>  
-        <tr>
-          <td>Mins:</td>
-          <td><input type="text" size="1" maxlength="2"></td>
-        <tr>   
-      </table>  
-    </div>
-    <div id="soundCheckBox">
-      <input type="checkbox" value="alert3Sound"> Play Sound? <div style="color: #990000; display:inline;">Preview</div>
-    </div>
-  </div>
+			  <!-- ALERT THREE -->
+			  <div class="col-md-2">
+			    <div id="timerList"> Alert<div style="color: #990000; display:inline;">Three</div> </div>
+			    <div id="timeRemaining"> When time remaining is: </div> 
+			    <div>
+			    	<table id="timerInput">
+				        <tr>
+				          	<td>Hours:</td>
+				          	<td><input type="text" size="1" maxlength="2" id="options-alert3Hours"></td>
+				        <tr>  
+				        <tr>
+				          	<td>Mins:</td>
+				          	<td><input type="text" size="1" maxlength="2" id="options-alert3Mins"></td>
+				        <tr>   
+			      	</table>  
+			    </div>
+			    <div id="soundCheckBox">
+			      	<input type="checkbox" id="options-alert3Sound" checked> Play Sound? <a href="#" style="color: #990000; display:inline;" id="alertPreview" title="Preview Sound">Preview</a>
+			    </div>
+			  </div>
 
-</div> <!-- end of set timer ROW -->
+			</div> <!-- end of set timer ROW -->
 
-<br>
+			<br>
 
-<!-- ROW: set timer button -->
-<div class="row">
-  <button type="button" class="btn btn-default btn-xs"> Set Timer & Close Settings </button>
-</div>
+			<!-- ROW: set timer button -->
+			<div class="row" id="timerOptions" style="display:none;">
+			  <button type="button" class="btn btn-default btn-xs" id="setTimer"> Set Timer & Close Settings </button>
+			</div>
 
-
-
-
-</div> <!-- end of container class -->
-  
-</body>
+		</div> <!-- end of container class -->
+	</body>
 </html>
