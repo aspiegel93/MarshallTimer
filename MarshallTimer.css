@@ -4,13 +4,8 @@ body{
 
 h1{
 	text-align: center;
-	padding-top: 2%;
+	padding-top: 8%;
 	font-size: 50px;
-}
-
-h2{
-	padding-top: 1%;
-	font-style: italic;
 }
 
 #timerField{
