@@ -8,9 +8,10 @@ h1{
 	font-size: 50px;
 }
 
-h2{
+#alertBanner{
 	padding-top: 1%;
 	font-style: italic;
+	font-size: 35px;
 }
 
 #timerField{
