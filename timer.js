@@ -18,6 +18,7 @@ function InitializePage() {
 	$("#showOptions").click(ToggleTimerOptions);
 	$("[id=alertPreview]").click(AlertPreview);
 	$("#completePreview").click(CompletePreview);
+	$("[id*='options-']").change(ValidateTimer);
 
 	$("#resetButton").prop("disabled", true);
 	$("#startButton").prop("disabled", true);
@@ -104,6 +105,13 @@ function SetTimer() { // Read inputs and set timer
 	ToggleTimerOptions();
 }
 
+function ValidateTimer() { // Validate timer fields and reset if necesarry
+	if(isNaN(event.target.value)) {
+		window.alert("Please enter a valid number.");	
+		event.target.value = "";	
+	}
+}
+
 function ToggleTimerOptions() { // Toggle timerOptions divs
 	$("[id=timerOptions]").toggle();
 	
@@ -122,18 +130,58 @@ function SetTimerField() { // Set timer field to current time
 	$("#timerField").text( hour.toString() + ":" + minute.toString() + ":" + second.toString());
 }
 
+function SetAlertBanner() {
+	var hour = ((currentTime - (currentTime % 3600)) / 3600);
+	var minute = ((currentTime - (currentTime % 60)) / 60) - ((currentTime - (currentTime % 3600)) / 60);
+
+	/* SET ALERT TEXT */
+	var minuteString = null;
+	var hourString = null;
+	if(minute == 1) minuteString = " Minute ";
+	if(minute > 1) minuteString = " Minutes ";
+	if(hour == 1) hourString = " Hour ";
+	if(hour > 1) hourString = " Hours ";
+
+	if(hourString != null && minuteString != null) { // If there are hours and minutes remaining
+		$("#alertBanner").text(hour.toString() + hourString + minute.toString() + minuteString + "Remaining!");
+	}
+	else if (hourString != null && minuteString == null) { // If there are only hours remaining
+		$("#alertBanner").text(hour.toString() + hourString + "Remaining!");
+	}
+	else if (hourString == null && minuteString != null) { // If there are only minutes remaining
+		$("#alertBanner").text(minute.toString() + minuteString + "Remaining!");
+	}
+
+	$("#alertBanner").css("visibility", "visible");
+
+	setTimeout(ClearAlertBanner, 5000);
+}
+
+function ClearAlertBanner() {
+	$("#alertBanner").css("visibility", "hidden");
+}
+
 function Timer() { // Decrement and display time every second
 	if (currentTime != 0) {
 		currentTime--;
 		SetTimerField();
-		if(currentTime == alertOne && $("#options-alert1Sound").prop("checked") && currentTime != 0) { // Play alert sound if alertOne
-			alertSound.play();
+		if(currentTime == alertOne && currentTime != 0) { // Show alert banner if alertOne
+			SetAlertBanner();
+			if($("#options-alert1Sound").prop("checked")) { // Play alert sound if checked
+				alertSound.play();
+			} 
 		}
-		if(currentTime == alertTwo && $("#options-alert2Sound").prop("checked") && currentTime != 0) { // Play alert sound if alertTwo
-			alertSound.play();
+		if(currentTime == alertTwo && currentTime != 0) { // Show alert banner if alertTwo
+			SetAlertBanner();
+			if($("#options-alert2Sound").prop("checked")) { // Play alert sound if checked
+				alertSound.play();
+			} 
 		}
-		if(currentTime == alertThree && $("#options-alert3Sound").prop("checked") && currentTime != 0) { // Play alert sound if alertThree
-			alertSound.play();
+		if(currentTime == alertThree && currentTime != 0) { // Show alert banner if alertThree
+			SetAlertBanner();
+			if($("#options-alert3Sound").prop("checked")) { // Play alert sound if checked
+				alertSound.play();
+			} 
 		}
 	}
 	if (currentTime == 0) {
