@@ -1,11 +1,18 @@
+@font-face { 
+	font-family: 'National'; src: url('//www.usc.edu/assets/fonts/NationalWeb-Regular.eot'); src: local(':)'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.woff') format('woff'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.ttf') format('truetype'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.svg') format('svg'); 
+	font-weight: 500; 
+	font-style: normal; 
+}
+
 body{
 	text-align: center;
+	font-family: National;
 }
 
 h1{
 	text-align: center;
 	padding-top: 2%;
-	font-size: 50px;
+	font-size: 65px;
 }
 
 #alertBanner{
@@ -15,6 +22,7 @@ h1{
 }
 
 #timerField{
+	font-family: Arial;
 	font-size: 50px;
 }
 
@@ -23,24 +31,25 @@ h1{
 }
 
 #timerList{
-	font-size: 18px;
+	font-size: 20px;
 }
 
 #showTimerOptions{
 	font-weight: bold;
 	text-align: left;
+	font-size: 16px;
 }
 
 #timeRemaining{
-	font-size: 10px;
+	font-size: 16px;
 }
 
 #hours{
-	font-size: 12px;
+	font-size: 16px;
 }
 
 #timerInput{
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 14px;	
 }
 
@@ -55,6 +64,6 @@ table, tr, td{
 }
 
 #soundCheckBox{
-	font-size: 10px;
+	font-size: 14px;
 	padding-bottom: 5%;
 }
