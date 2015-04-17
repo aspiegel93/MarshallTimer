@@ -1,7 +1,14 @@
-@font-face { 
+/*@font-face { 
 	font-family: 'National'; src: url('//www.usc.edu/assets/fonts/NationalWeb-Regular.eot'); src: local(':)'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.woff') format('woff'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.ttf') format('truetype'), url('//www.usc.edu/assets/fonts/NationalWeb-Regular.svg') format('svg'); 
 	font-weight: 500; 
 	font-style: normal; 
+}*/
+
+@font-face {
+	font-family: 'National';
+	src: url(NationalFamily/National-Regular.otf);
+	font-style: normal;
+	font-weight: 500;
 }
 
 body{
@@ -66,4 +73,10 @@ table, tr, td{
 #soundCheckBox{
 	font-size: 14px;
 	padding-bottom: 5%;
+}
+
+#errorMessage{
+	margin-left: 30%;
+	margin-right: 30%;
+	
 }

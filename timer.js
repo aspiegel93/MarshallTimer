@@ -26,6 +26,8 @@ function InitializePage() {
 
 	$("#timerField").text("00:00:00");
 
+	$("#errorMessage").hide();
+
 	alertSound = new Audio('alert.mp3');
 	completeSound = new Audio('complete.mp3');
 
@@ -63,6 +65,7 @@ function ResetTimer() { // Reset timer to default time
 }
 
 function SetTimer() { // Read inputs and set timer
+	$("#errorMessage").hide();
 		
 	/* Set time */
 	initialTime = parseInt($("#options-timerHours").val()) * 3600;
@@ -104,20 +107,21 @@ function SetTimer() { // Read inputs and set timer
 
 	//check if timer value and alert values are in descending order
 	if(initialTime == 0){
-		alert("Please enter a time value");
+		//alert("Please enter a time value");
+		errorMessage("Please enter a time value");
 		$("#startButton").prop("disabled", true);
 		SetTimerField();
 	}	
 	else if(initialTime <= alertOne){
-		alert("Timer value must be greater than Alert 1 value");
+		errorMessage("Timer value must be greater than Alert 1 value");
 		$("#startButton").prop("disabled", true);
 	}
 	else if(alertOne <= alertTwo && alertOne!=0 && alertTwo!=0){
-		alert("Alert 1 value must be greater than Alert 2 value");
+		errorMessage("Alert 1 value must be greater than Alert 2 value");
 		$("#startButton").prop("disabled", true);
 	}
 	else if(alertTwo <= alertThree && alertTwo!=0 && alertThree!=0){
-		alert("Alert 2 value must be greater than Alert 3 value");
+		errorMessage("Alert 2 value must be greater than Alert 3 value");
 		$("#startButton").prop("disabled", true);
 	}
 	else{
@@ -142,7 +146,7 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 
 	else if(isNaN(event.target.value)) {
 		
-		window.alert("Please enter a valid number.");	
+		errorMessage("Please enter a valid number");	
 		event.target.value = "";	
 	}
 
@@ -160,7 +164,7 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 
 
 	if(hours==0 && minutes==0){
-		window.alert("Must enter time value greater than zero");
+		errorMessage("Must enter time value greater than zero");
 		document.getElementById("options-timerHours").value = "";
 		document.getElementById("options-timerMins").value = "";
 		initialTime = 0;
@@ -168,21 +172,21 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 	}
 
 	if(a1hours=="0" && a1mins=="0"){
-		alert("Must enter alert value greater than zero");
+		errorMessage("Must enter alert value greater than zero");
 		document.getElementById("options-alert1Hours").value = "";
 		document.getElementById("options-alert1Mins").value = "";
 		$("#startButton").prop("disabled", true);
 	}
 
 	if(a2hours=="0" && a2mins=="0"){
-		alert("Must enter alert value greater than zero");
+		errorMessage("Must enter alert value greater than zero");
 		document.getElementById("options-alert2Hours").value = "";
 		document.getElementById("options-alert2Mins").value = "";
 		$("#startButton").prop("disabled", true);
 	}
 
 	if(a3hours=="0" && a3mins=="0"){
-		alert("Must enter alert value greater than zero");
+		errorMessage("Must enter alert value greater than zero");
 		document.getElementById("options-alert3Hours").value = "";
 		document.getElementById("options-alert3Mins").value = "";
 		$("#startButton").prop("disabled", true);
@@ -284,4 +288,9 @@ function AlertPreview() {
 
 function CompletePreview() {
 	completeSound.play();
+}
+
+function errorMessage(errorMessageText) {
+	document.getElementById("errorText").innerHTML = errorMessageText;
+	$("#errorMessage").fadeIn(500);
 }
