@@ -30,6 +30,9 @@ function InitializePage() {
 	completeSound = new Audio('complete.mp3');
 
 	showingOptions = false;
+
+	var allInputs = $(":input");
+    $(allInputs).attr('autocomplete', 'off');
 }
 
 function StartTimer() { // Start timer from set time
@@ -60,10 +63,7 @@ function ResetTimer() { // Reset timer to default time
 }
 
 function SetTimer() { // Read inputs and set timer
-	$("#startButton").prop("disabled", false);
-	$("#stopButton").prop("disabled", true);
-	$("#resetButton").prop("disabled", true);
-
+		
 	/* Set time */
 	initialTime = parseInt($("#options-timerHours").val()) * 3600;
 	if(isNaN(initialTime)) { // If timerHours is blank
@@ -101,15 +101,94 @@ function SetTimer() { // Read inputs and set timer
 		alertThree += parseInt($("#options-alert3Mins").val()) * 60;
 	}
 
-	SetTimerField();
-	ToggleTimerOptions();
+
+	//check if timer value and alert values are in descending order
+	if(initialTime == 0){
+		alert("Please enter a time value");
+		$("#startButton").prop("disabled", true);
+		SetTimerField();
+	}	
+	else if(initialTime <= alertOne){
+		alert("Timer value must be greater than Alert 1 value");
+		$("#startButton").prop("disabled", true);
+	}
+	else if(alertOne <= alertTwo && alertOne!=0 && alertTwo!=0){
+		alert("Alert 1 value must be greater than Alert 2 value");
+		$("#startButton").prop("disabled", true);
+	}
+	else if(alertTwo <= alertThree && alertTwo!=0 && alertThree!=0){
+		alert("Alert 2 value must be greater than Alert 3 value");
+		$("#startButton").prop("disabled", true);
+	}
+	else{
+		$("#stopButton").prop("disabled", true);
+		$("#resetButton").prop("disabled", true);
+		$("#startButton").prop("disabled", false);
+		SetTimerField();
+		ToggleTimerOptions();
+	}
+
+	
+	
+
 }
 
 function ValidateTimer() { // Validate timer fields and reset if necesarry
-	if(isNaN(event.target.value)) {
+	
+	if(event.target.id == "options-completeSound" || event.target.id == "options-alert1Sound"
+		|| event.target.id == "options-alert2Sound" || event.target.id == "options-alert3Sound"){
+		//don't alert if unchecking sound box when no timer values are entered yet
+	}
+
+	else if(isNaN(event.target.value)) {
+		
 		window.alert("Please enter a valid number.");	
 		event.target.value = "";	
 	}
+
+	var hours = parseInt($("#options-timerHours").val());
+	var minutes = parseInt($("#options-timerMins").val());
+
+	var a1hours = document.getElementById("options-alert1Hours").value;
+	var a1mins = document.getElementById("options-alert1Mins").value;
+
+	var a2hours = document.getElementById("options-alert2Hours").value;
+	var a2mins = document.getElementById("options-alert2Mins").value;
+
+	var a3hours = document.getElementById("options-alert3Hours").value;
+	var a3mins = document.getElementById("options-alert3Mins").value;
+
+
+	if(hours==0 && minutes==0){
+		window.alert("Must enter time value greater than zero");
+		document.getElementById("options-timerHours").value = "";
+		document.getElementById("options-timerMins").value = "";
+		initialTime = 0;
+		ResetTimer();
+	}
+
+	if(a1hours=="0" && a1mins=="0"){
+		alert("Must enter alert value greater than zero");
+		document.getElementById("options-alert1Hours").value = "";
+		document.getElementById("options-alert1Mins").value = "";
+		$("#startButton").prop("disabled", true);
+	}
+
+	if(a2hours=="0" && a2mins=="0"){
+		alert("Must enter alert value greater than zero");
+		document.getElementById("options-alert2Hours").value = "";
+		document.getElementById("options-alert2Mins").value = "";
+		$("#startButton").prop("disabled", true);
+	}
+
+	if(a3hours=="0" && a3mins=="0"){
+		alert("Must enter alert value greater than zero");
+		document.getElementById("options-alert3Hours").value = "";
+		document.getElementById("options-alert3Mins").value = "";
+		$("#startButton").prop("disabled", true);
+	}
+
+
 }
 
 function ToggleTimerOptions() { // Toggle timerOptions divs
@@ -185,7 +264,9 @@ function Timer() { // Decrement and display time every second
 		}
 	}
 	if (currentTime == 0) {
-		completeSound.play();
+		if($("#options-completeSound").prop("checked")){
+			completeSound.play();
+		}
 		$("#timerField").fadeOut(300);
 		$("#timerField").text("TIME'S UP!")
 		$("#timerField").fadeIn(300);
