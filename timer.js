@@ -7,6 +7,7 @@ var alertThree;
 var alertSound;
 var completeSound;
 var showingOptions;
+var validate;
 
 $(document).ready(InitializePage);
 
@@ -32,6 +33,7 @@ function InitializePage() {
 	completeSound = new Audio('complete.mp3');
 
 	showingOptions = false;
+	validate = true;		
 
 	var allInputs = $(":input");
     $(allInputs).attr('autocomplete', 'off');
@@ -66,70 +68,257 @@ function ResetTimer() { // Reset timer to default time
 
 function SetTimer() { // Read inputs and set timer
 	$("#errorMessage").hide();
+	resetColors();
 		
 	/* Set time */
-	initialTime = parseInt($("#options-timerHours").val()) * 3600;
+	/*initialTime = parseInt($("#options-timerHours").val()) * 3600;
 	if(isNaN(initialTime)) { // If timerHours is blank
 		initialTime = 0;
 	}
 	if(!isNaN(parseInt($("#options-timerMins").val()) * 60)) { // If timerMins is not blank
 		initialTime += parseInt($("#options-timerMins").val()) * 60;
 	}
-	currentTime = initialTime;
+	currentTime = initialTime;*/
 
 	/* Set alert one */
-	alertOne = parseInt($("#options-alert1Hours").val()) * 3600;
+	/*alertOne = parseInt($("#options-alert1Hours").val()) * 3600;
 	if(isNaN(alertOne)) { // If alert1Hours is blank
 		alertOne = 0;
 	}
 	if(!isNaN(parseInt($("#options-alert1Mins").val()) * 60)) { // If alert1Mins is not blank
 		alertOne += parseInt($("#options-alert1Mins").val()) * 60;
-	}
+	}*/
 
 	/* Set alert two */
-	alertTwo = parseInt($("#options-alert2Hours").val()) * 3600;
+	/*alertTwo = parseInt($("#options-alert2Hours").val()) * 3600;
 	if(isNaN(alertTwo)) { // If alert2Hours is blank
 		alertTwo = 0;
 	}
 	if(!isNaN(parseInt($("#options-alert2Mins").val()) * 60)) { // If alert2Mins is not blank
 		alertTwo += parseInt($("#options-alert2Mins").val()) * 60;
-	}
+	}*/
 
 	/* Set alert three */
-	alertThree = parseInt($("#options-alert3Hours").val()) * 3600;
+	/*alertThree = parseInt($("#options-alert3Hours").val()) * 3600;
 	if(isNaN(alertThree)) { // If alert3Hours is blank
 		alertThree = 0;
 	}
 	if(!isNaN(parseInt($("#options-alert3Mins").val()) * 60)) { // If alert3Mins is not blank
 		alertThree += parseInt($("#options-alert3Mins").val()) * 60;
+	}*/
+
+
+	//this should be aftr checking if timer value is zero  
+
+	var timerH = parseInt($("#options-timerHours").val());
+	var timerM = parseInt($("#options-timerMins").val());
+	var a1H = parseInt($("#options-alert1Hours").val());
+	var a1M = parseInt($("#options-alert1Mins").val());
+	var a2H = parseInt($("#options-alert2Hours").val());
+	var a2M = parseInt($("#options-alert2Mins").val());
+	var a3H = parseInt($("#options-alert3Hours").val());
+	var a3M = parseInt($("#options-alert3Mins").val());
+
+
+	//Set TIMER
+	if(isNaN(timerH) && !isNaN(timerM)){
+		if(timerM<=0){
+			errorMessage("Timer value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			initialTime = timerM*60;
+		}
+	}
+	else if(!isNaN(timerH) && isNaN(timerM)){
+		if(timerH<=0){
+			errorMessage("Timer value must be greater than zero");
+			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+			$("#startButton").prop("disabled", true);
+			validate = false;
+		}
+		else{
+			initialTime = timerH*3600;
+		}
+	}
+
+	else if(!isNaN(timerH) && !isNaN(timerM)){
+		if(timerH<=0 && timerM<=0){
+			errorMessage("Timer value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			initialTime = timerH*3600 + timerM*60;
+		}
+	}
+	else {
+		errorMessage("Please enter a time value");
+		$("#startButton").prop("disabled", true);		
+		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+		validate = false;
+	}
+
+	currentTime = initialTime;
+
+	//Set ALERT 1
+	if(isNaN(a1H) && !isNaN(a1M)){
+		if(a1M<=0){
+			errorMessage("Alert 1 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertOne = a1M*60;
+		}
+	}
+	else if(!isNaN(a1H) && isNaN(a1M)){
+		if(a1H<=0){
+			errorMessage("Alert 1 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertOne = a1H*3600;
+		}
+	}
+
+	else if(!isNaN(a1H) && !isNaN(a1M)){
+		if(a1H<=0 && a1M<=0){
+			errorMessage("Alert 1 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
+			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertOne = a1H*3600 + a1M*60;
+		}
+	}
+
+	//Set ALERT 2
+	if(isNaN(a2H) && !isNaN(a2M)){
+		if(a2M<=0){
+			errorMessage("Alert 2 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertTwo = a2M*60;
+		}
+	}
+	else if(!isNaN(a2H) && isNaN(a2M)){
+		if(a2H<=0){
+			errorMessage("Alert 2 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertTwo = a2H*3600;
+		}
+	}
+
+	else if(!isNaN(a2H) && !isNaN(a2M)){
+		if(a2H<=0 && a2M<=0){
+			errorMessage("ALert 2 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
+			document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertTwo = a2H*3600 + a2M*60;
+		}
+	}
+
+		//Set ALERT 3
+	if(isNaN(a3H) && !isNaN(a3M)){
+		if(a3M<=0){
+			errorMessage("Alert 3 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert3Mins").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertThree = a3M*60;
+		}
+	}
+	else if(!isNaN(a3H) && isNaN(a3M)){
+		if(a3H<=0){
+			errorMessage("Alert 3 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert3Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertThree = a3H*3600;
+		}
+	}
+
+	else if(!isNaN(a3H) && !isNaN(a3M)){
+		if(a3H<=0 && a3M<=0){
+			errorMessage("ALert 3 value must be greater than zero");
+			$("#startButton").prop("disabled", true);
+			document.getElementById("options-alert3Mins").style.backgroundColor = "#FFFF99";
+			document.getElementById("options-alert3Hours").style.backgroundColor = "#FFFF99";
+			validate = false;
+		}
+		else{
+			alertThree = a3H*3600 + a3M*60;
+		}
 	}
 
 
 	//check if timer value and alert values are in descending order
-	if(initialTime == 0){
-		//alert("Please enter a time value");
+	if(initialTime <= 0){
 		errorMessage("Please enter a time value");
+		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
 		$("#startButton").prop("disabled", true);
 		SetTimerField();
+		validate = false;
 	}	
 	else if(initialTime <= alertOne){
 		errorMessage("Timer value must be greater than Alert 1 value");
 		$("#startButton").prop("disabled", true);
+		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+		validate = false;
 	}
-	else if(alertOne <= alertTwo && alertOne!=0 && alertTwo!=0){
+	else if(alertOne <= alertTwo && alertOne>0 && alertTwo>0){
 		errorMessage("Alert 1 value must be greater than Alert 2 value");
 		$("#startButton").prop("disabled", true);
+		document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
+		validate = false;
 	}
-	else if(alertTwo <= alertThree && alertTwo!=0 && alertThree!=0){
+	else if(alertTwo <= alertThree && alertTwo>0 && alertThree>0){
 		errorMessage("Alert 2 value must be greater than Alert 3 value");
 		$("#startButton").prop("disabled", true);
+		document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
+		validate = false;
 	}
-	else{
+
+
+	if(validate==true){
 		$("#stopButton").prop("disabled", true);
 		$("#resetButton").prop("disabled", true);
 		$("#startButton").prop("disabled", false);
 		SetTimerField();
 		ToggleTimerOptions();
+	}
+	else{
+		validate = true;
 	}
 
 	
@@ -163,21 +352,21 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 	var a3mins = document.getElementById("options-alert3Mins").value;
 
 
-	if(hours==0 && minutes==0){
+	/*if(hours==0 && minutes==0){
 		errorMessage("Must enter time value greater than zero");
 		document.getElementById("options-timerHours").value = "";
 		document.getElementById("options-timerMins").value = "";
 		initialTime = 0;
 		ResetTimer();
-	}
+	}*/
 
-	if(a1hours=="0" && a1mins=="0"){
+/*	if(a1hours=="0" && a1mins=="0"){
 		errorMessage("Must enter alert value greater than zero");
 		document.getElementById("options-alert1Hours").value = "";
 		document.getElementById("options-alert1Mins").value = "";
 		$("#startButton").prop("disabled", true);
-	}
-
+	}*/
+/*
 	if(a2hours=="0" && a2mins=="0"){
 		errorMessage("Must enter alert value greater than zero");
 		document.getElementById("options-alert2Hours").value = "";
@@ -190,7 +379,7 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 		document.getElementById("options-alert3Hours").value = "";
 		document.getElementById("options-alert3Mins").value = "";
 		$("#startButton").prop("disabled", true);
-	}
+	}*/
 
 
 }
@@ -203,6 +392,8 @@ function ToggleTimerOptions() { // Toggle timerOptions divs
 	else $("#showOptions").html("&#x25BC; SET TIMER");
 
 	if(currentTime == 0) ResetTimer();
+
+	$("#errorMessage").hide();
 }
 
 function SetTimerField() { // Set timer field to current time
@@ -293,4 +484,19 @@ function CompletePreview() {
 function errorMessage(errorMessageText) {
 	document.getElementById("errorText").innerHTML = errorMessageText;
 	$("#errorMessage").fadeIn(500);
+}
+
+function resetColors() {  //resets background color of text boxes
+	document.getElementById("options-timerMins").style.backgroundColor = "white";
+	document.getElementById("options-timerHours").style.backgroundColor = "white";
+	document.getElementById("options-alert1Mins").style.backgroundColor = "white";
+	document.getElementById("options-alert1Hours").style.backgroundColor = "white";
+	document.getElementById("options-alert2Mins").style.backgroundColor = "white";
+	document.getElementById("options-alert2Hours").style.backgroundColor = "white";
+	document.getElementById("options-alert3Mins").style.backgroundColor = "white";
+	document.getElementById("options-alert3Hours").style.backgroundColor = "white";
+}
+
+function errorColor(errorId) { //set background color for error 
+	document.getElementById("errorId").style.backgroundColor = "#FFFF99";
 }
