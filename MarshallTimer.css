@@ -79,6 +79,7 @@ table, tr, td{
 	margin-left: 30%;
 	margin-right: 30%;
 	font-size: 20px;
+	color: #990000;
 }
 
 /*#options-timerHours{
@@ -90,3 +91,4 @@ input[type="text"]
     font-size:20px;
    /* font-family: "Arial";*/
 }
+

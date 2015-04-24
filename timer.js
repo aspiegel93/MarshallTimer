@@ -44,6 +44,7 @@ function StartTimer() { // Start timer from set time
 	$("#startButton").prop("disabled", true);
 	$("#stopButton").prop("disabled", false);
 	$("[id*='options-']").prop("disabled", true);
+	$("#setTimer").prop("disabled", true);
 
 	timerInterval = setInterval(Timer, 1000);
 }
@@ -53,6 +54,7 @@ function StopTimer() { // Stop timer at current time
 	$("#startButton").prop("disabled", false);
 	$("#stopButton").prop("disabled", true);
 	$("[id*='options-']").prop("disabled", false);
+	$("#setTimer").prop("disabled", false);
 	
 	clearInterval(timerInterval);
 }
@@ -68,47 +70,7 @@ function ResetTimer() { // Reset timer to default time
 
 function SetTimer() { // Read inputs and set timer
 	$("#errorMessage").hide();
-	resetColors();
-		
-	/* Set time */
-	/*initialTime = parseInt($("#options-timerHours").val()) * 3600;
-	if(isNaN(initialTime)) { // If timerHours is blank
-		initialTime = 0;
-	}
-	if(!isNaN(parseInt($("#options-timerMins").val()) * 60)) { // If timerMins is not blank
-		initialTime += parseInt($("#options-timerMins").val()) * 60;
-	}
-	currentTime = initialTime;*/
-
-	/* Set alert one */
-	/*alertOne = parseInt($("#options-alert1Hours").val()) * 3600;
-	if(isNaN(alertOne)) { // If alert1Hours is blank
-		alertOne = 0;
-	}
-	if(!isNaN(parseInt($("#options-alert1Mins").val()) * 60)) { // If alert1Mins is not blank
-		alertOne += parseInt($("#options-alert1Mins").val()) * 60;
-	}*/
-
-	/* Set alert two */
-	/*alertTwo = parseInt($("#options-alert2Hours").val()) * 3600;
-	if(isNaN(alertTwo)) { // If alert2Hours is blank
-		alertTwo = 0;
-	}
-	if(!isNaN(parseInt($("#options-alert2Mins").val()) * 60)) { // If alert2Mins is not blank
-		alertTwo += parseInt($("#options-alert2Mins").val()) * 60;
-	}*/
-
-	/* Set alert three */
-	/*alertThree = parseInt($("#options-alert3Hours").val()) * 3600;
-	if(isNaN(alertThree)) { // If alert3Hours is blank
-		alertThree = 0;
-	}
-	if(!isNaN(parseInt($("#options-alert3Mins").val()) * 60)) { // If alert3Mins is not blank
-		alertThree += parseInt($("#options-alert3Mins").val()) * 60;
-	}*/
-
-
-	//this should be aftr checking if timer value is zero  
+	resetColors();		 
 
 	var timerH = parseInt($("#options-timerHours").val());
 	var timerM = parseInt($("#options-timerMins").val());
@@ -351,45 +313,18 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 	var a3hours = document.getElementById("options-alert3Hours").value;
 	var a3mins = document.getElementById("options-alert3Mins").value;
 
-
-	/*if(hours==0 && minutes==0){
-		errorMessage("Must enter time value greater than zero");
-		document.getElementById("options-timerHours").value = "";
-		document.getElementById("options-timerMins").value = "";
-		initialTime = 0;
-		ResetTimer();
-	}*/
-
-/*	if(a1hours=="0" && a1mins=="0"){
-		errorMessage("Must enter alert value greater than zero");
-		document.getElementById("options-alert1Hours").value = "";
-		document.getElementById("options-alert1Mins").value = "";
-		$("#startButton").prop("disabled", true);
-	}*/
-/*
-	if(a2hours=="0" && a2mins=="0"){
-		errorMessage("Must enter alert value greater than zero");
-		document.getElementById("options-alert2Hours").value = "";
-		document.getElementById("options-alert2Mins").value = "";
-		$("#startButton").prop("disabled", true);
-	}
-
-	if(a3hours=="0" && a3mins=="0"){
-		errorMessage("Must enter alert value greater than zero");
-		document.getElementById("options-alert3Hours").value = "";
-		document.getElementById("options-alert3Mins").value = "";
-		$("#startButton").prop("disabled", true);
-	}*/
-
-
 }
 
 function ToggleTimerOptions() { // Toggle timerOptions divs
 	$("[id=timerOptions]").toggle();
 	
 	showingOptions = !showingOptions;
-	if(!showingOptions) $("#showOptions").html("&#x25B6; SET TIMER");
-	else $("#showOptions").html("&#x25BC; SET TIMER");
+	if(!showingOptions) {
+		$("#showOptions").html("&#x25B6; SET TIMER");	
+	}
+	else {
+		$("#showOptions").html("&#x25BC; SET TIMER");
+	}
 
 	if(currentTime == 0) ResetTimer();
 
