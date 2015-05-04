@@ -70,7 +70,8 @@ function ResetTimer() { // Reset timer to default time
 
 function SetTimer() { // Read inputs and set timer
 	$("#errorMessage").hide();
-	resetColors();		 
+	resetColors();		
+	clearValues(); 
 
 	var timerH = parseInt($("#options-timerHours").val());
 	var timerM = parseInt($("#options-timerMins").val());
@@ -434,4 +435,12 @@ function resetColors() {  //resets background color of text boxes
 
 function errorColor(errorId) { //set background color for error 
 	document.getElementById("errorId").style.backgroundColor = "#FFFF99";
+}
+
+function clearValues() {  //clear current time values on backend 
+	currentTime = 0;
+	initialTime = 0;
+	alertOne = 0;
+	alertTwo = 0;
+	alertThree = 0;
 }
