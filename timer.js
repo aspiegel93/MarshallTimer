@@ -15,8 +15,10 @@ function InitializePage() {
 	$("#startButton").click(StartTimer);
 	$("#stopButton").click(StopTimer);
 	$("#resetButton").click(ResetTimer);
+	$("#clearButton").click(clearTimer);
 	$("#setTimer").click(SetTimer);
 	$("#showOptions").click(ToggleTimerOptions);
+	$("#helpWindow").click(HelpWindow);
 	$("[id=alertPreview]").click(AlertPreview);
 	$("#completePreview").click(CompletePreview);
 	$("[id*='options-']").change(ValidateTimer);
@@ -24,6 +26,7 @@ function InitializePage() {
 	$("#resetButton").prop("disabled", true);
 	$("#startButton").prop("disabled", true);
 	$("#stopButton").prop("disabled", true);
+	$("#clearButton").prop("disabled", true);
 
 	$("#timerField").text("00:00:00");
 
@@ -443,4 +446,26 @@ function clearValues() {  //clear current time values on backend
 	alertOne = 0;
 	alertTwo = 0;
 	alertThree = 0;
+}
+
+function clearTimer() {  //clear front end and back end timer values, when user clicks clear button
+
+	clearValues();
+
+	document.getElementById("options-timerMins").value = "";
+	document.getElementById("options-timerHours").value = "";
+	document.getElementById("options-alert1Mins").value = "";
+	document.getElementById("options-alert1Hours").value = "";
+	document.getElementById("options-alert2Mins").value = "";
+	document.getElementById("options-alert2Hours").value = "";
+	document.getElementById("options-alert3Mins").value = "";
+	document.getElementById("options-alert3Hours").value = "";
+
+	ResetTimer();
+
+}
+
+function HelpWindow() {  //displays help window when "help" link clicked
+	var helpWindow = window.open("", "Marshall Timer Instructions", "width=500, height=500");
+	helpWindow.document.write("<h1> About the Marshall Timer </h1>")
 }

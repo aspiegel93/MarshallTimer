@@ -57,9 +57,12 @@
 			<!-- ROW: set timer dropdown --> 
 			<div class="row" id="showTimerOptions">
 			  	<div class="col-md-offset-3 col-md-6">  
-			  		<a href="#" style="color: #000000;" id="showOptions" title="Open/Close Settings"> &#x25B6; SET TIMER </a></div>
+			  		<a href="#" style="color: #000000;" id="showOptions" title="Open/Close Settings"> &#x25B6; SET TIMER</a>
+			  		 |  <!-- separator between "set timer" and "help" -->
+			  		<a href="#" style="color: #000000;" id="helpWindow" title="Show Help Box"> HELP </a> 
 			  	</div>
-			</div> 
+			</div>
+		</div> 
 			<hr>
 
 			<!-- ROW: timer input fields and labels -->
@@ -166,6 +169,11 @@
     			<div>
         			<strong>Error!</strong> <div id="errorText" style="display: inline;"> A problem has been occurred while submitting your data. </div>
     			</div>
+			</div>
+
+			<!-- ROW: Clear Button -->
+			<div class="row" style="display:none;">
+				<button type="button" class="btn btn-default btn-s" id="clearButton"> Clear </button>
 			</div>
 
 		</div> <!-- end of container class -->
