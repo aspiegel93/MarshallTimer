@@ -452,6 +452,8 @@ function clearValues() {  //clear current time values on backend
 function clearTimer() {  //clear front end and back end timer values, when user clicks clear button
 
 	clearValues();
+	resetColors();
+	$("#errorMessage").hide();
 
 	document.getElementById("options-timerMins").value = "";
 	document.getElementById("options-timerHours").value = "";
