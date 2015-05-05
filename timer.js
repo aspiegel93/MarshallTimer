@@ -469,6 +469,5 @@ function clearTimer() {  //clear front end and back end timer values, when user 
 }
 
 function HelpWindow() {  //displays help window when "help" link clicked
-	var helpWindow = window.open("", "Marshall Timer Instructions", "width=500, height=500");
-	helpWindow.document.write("<h1> About the Marshall Timer </h1> <hr>")
+	var helpWindow = window.open("Help.html", "timerHelp", "width=500,height=400,location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes");
 }
