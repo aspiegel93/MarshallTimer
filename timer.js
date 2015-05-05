@@ -48,7 +48,7 @@ function StartTimer() { // Start timer from set time
 	$("#stopButton").prop("disabled", false);
 	$("[id*='options-']").prop("disabled", true);
 	$("#setTimer").prop("disabled", true);
-
+	$("#clearButton").prop("disabled",true);
 	timerInterval = setInterval(Timer, 1000);
 }
 
@@ -58,7 +58,7 @@ function StopTimer() { // Stop timer at current time
 	$("#stopButton").prop("disabled", true);
 	$("[id*='options-']").prop("disabled", false);
 	$("#setTimer").prop("disabled", false);
-	
+	$("#clearButton").prop("disabled",false);
 	clearInterval(timerInterval);
 }
 
@@ -75,6 +75,7 @@ function SetTimer() { // Read inputs and set timer
 	$("#errorMessage").hide();
 	resetColors();		
 	clearValues(); 
+	$("#clearButton").prop("disabled", false);
 
 	var timerH = parseInt($("#options-timerHours").val());
 	var timerM = parseInt($("#options-timerMins").val());
@@ -89,7 +90,7 @@ function SetTimer() { // Read inputs and set timer
 	//Set TIMER
 	if(isNaN(timerH) && !isNaN(timerM)){
 		if(timerM<=0){
-			errorMessage("Timer value must be greater than zero");
+			errorMessage("SetTimer value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -100,7 +101,7 @@ function SetTimer() { // Read inputs and set timer
 	}
 	else if(!isNaN(timerH) && isNaN(timerM)){
 		if(timerH<=0){
-			errorMessage("Timer value must be greater than zero");
+			errorMessage("SetTimer value should be greater than zero");
 			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
 			$("#startButton").prop("disabled", true);
 			validate = false;
@@ -112,7 +113,7 @@ function SetTimer() { // Read inputs and set timer
 
 	else if(!isNaN(timerH) && !isNaN(timerM)){
 		if(timerH<=0 && timerM<=0){
-			errorMessage("Timer value must be greater than zero");
+			errorMessage("SetTimer value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
 			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
@@ -135,7 +136,7 @@ function SetTimer() { // Read inputs and set timer
 	//Set ALERT 1
 	if(isNaN(a1H) && !isNaN(a1M)){
 		if(a1M<=0){
-			errorMessage("Alert 1 value must be greater than zero");
+			errorMessage("AlertOne value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -146,7 +147,7 @@ function SetTimer() { // Read inputs and set timer
 	}
 	else if(!isNaN(a1H) && isNaN(a1M)){
 		if(a1H<=0){
-			errorMessage("Alert 1 value must be greater than zero");
+			errorMessage("AlertOne value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -158,7 +159,7 @@ function SetTimer() { // Read inputs and set timer
 
 	else if(!isNaN(a1H) && !isNaN(a1M)){
 		if(a1H<=0 && a1M<=0){
-			errorMessage("Alert 1 value must be greater than zero");
+			errorMessage("AlertOne value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
 			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
@@ -172,7 +173,7 @@ function SetTimer() { // Read inputs and set timer
 	//Set ALERT 2
 	if(isNaN(a2H) && !isNaN(a2M)){
 		if(a2M<=0){
-			errorMessage("Alert 2 value must be greater than zero");
+			errorMessage("AlertTwo value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -183,7 +184,7 @@ function SetTimer() { // Read inputs and set timer
 	}
 	else if(!isNaN(a2H) && isNaN(a2M)){
 		if(a2H<=0){
-			errorMessage("Alert 2 value must be greater than zero");
+			errorMessage("AlertTwo value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -195,7 +196,7 @@ function SetTimer() { // Read inputs and set timer
 
 	else if(!isNaN(a2H) && !isNaN(a2M)){
 		if(a2H<=0 && a2M<=0){
-			errorMessage("ALert 2 value must be greater than zero");
+			errorMessage("ALertTwo value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
 			document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
@@ -209,7 +210,7 @@ function SetTimer() { // Read inputs and set timer
 		//Set ALERT 3
 	if(isNaN(a3H) && !isNaN(a3M)){
 		if(a3M<=0){
-			errorMessage("Alert 3 value must be greater than zero");
+			errorMessage("AlertThree value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert3Mins").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -220,7 +221,7 @@ function SetTimer() { // Read inputs and set timer
 	}
 	else if(!isNaN(a3H) && isNaN(a3M)){
 		if(a3H<=0){
-			errorMessage("Alert 3 value must be greater than zero");
+			errorMessage("AlertThree value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert3Hours").style.backgroundColor = "#FFFF99";
 			validate = false;
@@ -232,7 +233,7 @@ function SetTimer() { // Read inputs and set timer
 
 	else if(!isNaN(a3H) && !isNaN(a3M)){
 		if(a3H<=0 && a3M<=0){
-			errorMessage("ALert 3 value must be greater than zero");
+			errorMessage("ALertThree value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert3Mins").style.backgroundColor = "#FFFF99";
 			document.getElementById("options-alert3Hours").style.backgroundColor = "#FFFF99";
@@ -246,7 +247,7 @@ function SetTimer() { // Read inputs and set timer
 
 	//check if timer value and alert values are in descending order
 	if(initialTime <= 0){
-		errorMessage("Please enter a time value");
+		errorMessage("SetTimer value should be greater than zero");
 		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
 		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
 		$("#startButton").prop("disabled", true);
@@ -254,21 +255,21 @@ function SetTimer() { // Read inputs and set timer
 		validate = false;
 	}	
 	else if(initialTime <= alertOne){
-		errorMessage("Timer value must be greater than Alert 1 value");
+		errorMessage("SetTimer value should be greater than AlertOne value");
 		$("#startButton").prop("disabled", true);
 		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
 		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
 		validate = false;
 	}
 	else if(alertOne <= alertTwo && alertOne>0 && alertTwo>0){
-		errorMessage("Alert 1 value must be greater than Alert 2 value");
+		errorMessage("AlertOne value should be greater than AlertTwo value");
 		$("#startButton").prop("disabled", true);
 		document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
 		document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
 		validate = false;
 	}
 	else if(alertTwo <= alertThree && alertTwo>0 && alertThree>0){
-		errorMessage("Alert 2 value must be greater than Alert 3 value");
+		errorMessage("AlertTwo value should be greater than AlertThree value");
 		$("#startButton").prop("disabled", true);
 		document.getElementById("options-alert2Mins").style.backgroundColor = "#FFFF99";
 		document.getElementById("options-alert2Hours").style.backgroundColor = "#FFFF99";
@@ -462,10 +463,12 @@ function clearTimer() {  //clear front end and back end timer values, when user 
 	document.getElementById("options-alert3Hours").value = "";
 
 	ResetTimer();
+	$("#startButton").prop("disabled",true);
+	$("#clearButton").prop("disabled",true);
 
 }
 
 function HelpWindow() {  //displays help window when "help" link clicked
 	var helpWindow = window.open("", "Marshall Timer Instructions", "width=500, height=500");
-	helpWindow.document.write("<h1> About the Marshall Timer </h1>")
+	helpWindow.document.write("<h1> About the Marshall Timer </h1> <hr>")
 }
