@@ -4,13 +4,6 @@
 	font-style: normal; 
 }
 
-/*@font-face {
-	font-family: 'National';
-	src: url(NationalFamily/National-Regular.otf);
-	font-style: normal;
-	font-weight: 500;
-}*/
-
 body{
 	text-align: center;
 	font-family: National;
@@ -86,14 +79,11 @@ table, tr, td{
 	color: #990000;
 }
 
-/*#options-timerHours{
-	box-shadow: 0 0 5px red;
-}*/
-
 input[type="text"]
 {
-    font-size:20px;
+    font-size: 16px;
    	font-family: "Arial";
+   	font-weight: bold;
 }
 
 /*help window css*/
