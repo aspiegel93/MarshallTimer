@@ -21,7 +21,7 @@ function InitializePage() {
 	$("#helpWindow").click(HelpWindow);
 	$("[id=alertPreview]").click(AlertPreview);
 	$("#completePreview").click(CompletePreview);
-	$("[id*='options-']").change(ValidateTimer);
+	//$("[id*='options-']").change(ValidateTimer);
 
 	$("#resetButton").prop("disabled", true);
 	$("#startButton").prop("disabled", true);
@@ -93,10 +93,105 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 	var a3H = parseInt($("#options-alert3Hours").val());
 	var a3M = parseInt($("#options-alert3Mins").val());
 
-	var a1validate = true;
+
+
+	
+	
 
 
 	//Set TIMER
+
+/*	if($("#options-timerHours").val().search(/./) == -1 && $("#options-timerMins").val().search(/./) == -1){
+		errorMessage("Please enter a time value");
+		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+		$("#startButton").prop("disabled", true);
+		validate = false;
+	}
+	
+	else if($("#options-timerHours").val().search(/\d{1,2}/) == -1){  //if input contains no numbers
+		errorMessage("Please enter numerical value for SetTimer hours");
+		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+		$("#startButton").prop("disabled", true);
+		validate = false;
+	}
+	else if($("#options-timerMins").val().search(/\d{1,2}/) == -1){  //if input contains no numbers
+		errorMessage("Please enter numerical value for SetTimer minutes");
+		document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+		$("#startButton").prop("disabled", true);
+		validate = false;
+	}
+*/
+
+	if($("#options-timerHours").val().search(/./) == -1){
+		if($("#options-timerMins").val().search(/./) == -1){
+			//both inputs are blank
+			errorMessage("Please enter a time value");
+			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+			document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+			$("#startButton").prop("disabled", true);
+			validate = false;
+		}
+		else{
+			//hours input is blank, mins input has value
+			if($("#options-timerMins").val().search(/\D/) != -1){  //if contains characters other than digits
+				errorMessage("Please enter numerical value for SetTimer minutes");
+				document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+				$("#startButton").prop("disabled", true);
+				validate = false;
+			}
+			else{
+				initialTime = timerM*60;
+			}
+		}
+	}
+	else{
+		//hours input has value 
+		if($("#options-timerHours").val().search(/\D/) != -1){  //if contains characters other than digits
+			errorMessage("Please enter numerical value for SetTimer hours");
+			document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
+			$("#startButton").prop("disabled", true);
+			validate = false;
+		}
+		else{
+			initialTime = timerH*3600;
+			if($("#options-timerMins").val().search(/./) != -1){
+				//hours and mins input has value 
+				if($("#options-timerMins").val().search(/\D/) != -1){  //if contains characters other than digits
+					errorMessage("Please enter numerical value for SetTimer minutes");
+					document.getElementById("options-timerMins").style.backgroundColor = "#FFFF99";
+					$("#startButton").prop("disabled", true);
+					validate = false;
+				}
+				else{
+					initialTime += timerM*60;
+				}
+			}
+		}
+	}
+
+
+
+
+/*	if(hours is blank){
+		if(mins is blank){
+			both values are blank
+		}
+		else{
+			hours is blank, mins has value
+			validate mins input 
+		}
+	}
+	else{
+		hours has value
+		validate hours input
+		if(mins has value){
+			validate mins input 
+		}
+	}*/
+
+
+/*
 	if(isNaN(timerH) && !isNaN(timerM)){
 		if(timerM<=0){
 			errorMessage("SetTimer value should be greater than zero");
@@ -139,13 +234,12 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 		document.getElementById("options-timerHours").style.backgroundColor = "#FFFF99";
 		validate = false;
 	}
-
+*/
 	
 		currentTime = initialTime;
-		//timerValues = true;
 	
 	
-
+/*
 	//Set ALERT 1
 	if(isNaN(a1H) && !isNaN(a1M)){
 		if(a1M<=0){
@@ -153,24 +247,20 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
 			validate = false;
-			a1validate = false;
+
 		}
 		else{
 			alertOne = a1M*60;
 		}
 	}
 	else if(!isNaN(a1H) && isNaN(a1M)){
-/*		if(a1H%1 != 0){
-			errorMessage("AlertOne value should be a whole number");
-			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
-			validate = false;
-		}*/
 		if(a1H<=0){
 			errorMessage("AlertOne value should be greater than zero");
 			$("#startButton").prop("disabled", true);
 			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
 			validate = false;
-			a1validate = false;
+
+
 		}
 		else{
 			alertOne = a1H*3600;
@@ -184,13 +274,16 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 			document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
 			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
 			validate = false;
-			a1validate = false;
+
+
 		}
 		else{
 			alertOne = a1H*3600 + a1M*60;
 		}
 	}
 
+*/
+/*
 	//Set ALERT 2
 	if(isNaN(a2H) && !isNaN(a2M)){
 		if(a2M<=0){
@@ -228,6 +321,8 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 		}
 	}
 
+	*/
+/*
 		//Set ALERT 3
 	if(isNaN(a3H) && !isNaN(a3M)){
 		if(a3M<=0){
@@ -265,7 +360,9 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 		}
 	}
 
+*/
 
+/*
 	//check if timer value and alert values are in descending order
 	if(initialTime <= 0){
 		//errorMessage("SetTimer value should be greater than zero");
@@ -297,26 +394,8 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 		validate = false;
 	}
 
-	//check if inputs are whole numbers, no decimals
-/*	if(validate == true){
-		if(a1validate == true){
-			if(Math.floor(a1H) != a1H && !isNaN(a1H)){
-			errorMessage("AlertOne value should be a whole number");
-			document.getElementById("options-alert1Hours").style.backgroundColor = "#FFFF99";
-			$("#startButton").prop("disabled", true);
-			validate = false;
-			}
-			if(Math.floor(a1M) != a1M && !isNaN(a1M)){
-				errorMessage("AlertOne value should be a whole number");
-				document.getElementById("options-alert1Mins").style.backgroundColor = "#FFFF99";
-				$("#startButton").prop("disabled", true);
-				validate = false;
-			}
-		}
-		
-	}*/
 	
-	
+	*/
 
 
 	//if all inputs are validated then enable start button
@@ -331,9 +410,11 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 		validate = true;
 	}
 
+
+
 }
 
-function ValidateTimer() { // Validate timer fields and reset if necesarry
+/*function ValidateTimer() { // Validate timer fields and reset if necesarry
 	
 	if(event.target.id == "options-completeSound" || event.target.id == "options-alert1Sound"
 		|| event.target.id == "options-alert2Sound" || event.target.id == "options-alert3Sound"){
@@ -347,6 +428,8 @@ function ValidateTimer() { // Validate timer fields and reset if necesarry
 	}
 
 }
+*/
+
 
 function ToggleTimerOptions() { // Toggle timerOptions divs
 	$("[id=timerOptions]").toggle();
