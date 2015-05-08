@@ -93,11 +93,6 @@ function SetTimer() { // Reads inputs, validates inputs, and set timer
 	var a3M = parseInt($("#options-alert3Mins").val());
 
 
-
-	
-	
-
-
 	//Set TIMER
 	if($("#options-timerHours").val().search(/./) == -1){
 		if($("#options-timerMins").val().search(/./) == -1){
@@ -429,9 +424,6 @@ function resetColors() {  //resets background color of text boxes
 	document.getElementById("options-alert3Hours").style.backgroundColor = "white";
 }
 
-function errorColor(errorId) { //set background color for error 
-	document.getElementById("errorId").style.backgroundColor = "#FFFF99";
-}
 
 function clearValues() {  //clear current time values on backend 
 	currentTime = 0;
@@ -466,12 +458,3 @@ function HelpWindow() {  //displays help window when "help" link clicked
 	var helpWindow = window.open("Help.html", "timerHelp", "width=500,height=400,location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes");
 }
 
-function isInteger(x) {
-    var a = x.indexOf(".");
-    if(n == -1){ 
-    	return true;
-    }
-    else{
-    	return false;
-    }
-}
